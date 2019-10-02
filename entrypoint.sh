@@ -13,7 +13,7 @@ fi
 # If check arguments of group and gid not null, it delete default group.
 if [ -n "${GROUP}" -o -n "${GID}" ]; then
 
-  if [ -z "${GROUP}"]; then 
+  if [ -z "${GROUP}" ]; then 
     echo "tmp error message: GROUP"
     exit 1
   fi
