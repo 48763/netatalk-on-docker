@@ -5,8 +5,8 @@ LABEL maintainer="Yuki git@48763 <future.starshine@gmail.com>"
 ENV NETATALK_VERSION 3.1.12
 
 RUN set -x \
-    && addgroup -g 101 tm \
-    && adduser -D -H -u 101 -s /sbin/nologin -G tm -g tm yuki \ 
+    && addgroup -g 1000 tm \
+    && adduser -D -H -u 1000 -s /sbin/nologin -G tm -g tm yuki \ 
     && echo "yuki:P@ssw0rd" | chpasswd \
     && tempDir="$(mktemp -d)" \
     && netatalkPackages=" \
