@@ -23,7 +23,7 @@ if [ -n "${GROUP}" -o -n "${GID}" ]; then
 fi
 
 # If check arguments of group not null, it create group.
-if [ -n "${GROUP}"]; then 
+if [ -n "${GROUP}" ]; then 
 
   if [ -n "${GID}" ]; then
     addgroup -g ${GID} ${GROUP}
@@ -65,13 +65,13 @@ if [ ! -e /data/time-machine ]; then
 fi
 
 FIND="find /data/ -type d -group 1000 -name"
-if [ -n ${GID} ]; then
+if [ -n "${GID}" ]; then
   FIND="find /data/ -type d -group ${GID} -name"
 fi
 
 if [ -z $(${FIND} share-folder) ]; then 
 
-  if [ -n ${GID} ]; then
+  if [ -n "${GID}" ]; then
     chgrp -R ${GID} /data/share-folder
   else
     chgrp -R 1000 /data/share-folder
@@ -83,7 +83,7 @@ fi
 
 if [ -z $(${FIND} time-machine) ]; then 
 
-  if [ -n ${GID} ]; then
+  if [ -n "${GID}" ]; then
     chgrp -R ${GID} /data/time-machine
   else
     chgrp -R 1000 /data/time-machine
