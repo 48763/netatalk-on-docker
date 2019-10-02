@@ -1,7 +1,7 @@
 # If check arguments of user and uid not null, it delete default user.
 if [ -n "${USER}" -o -n "${UID}" ]; then
 
-  if [ -z "${USER}"]; then 
+  if [ -z "${USER}" ]; then 
     echo "tmp error message: USER"
     exit 1
   fi
