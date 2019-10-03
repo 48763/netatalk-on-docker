@@ -5,9 +5,6 @@ LABEL maintainer="Yuki git@48763 <future.starshine@gmail.com>"
 ENV NETATALK_VERSION 3.1.12
 
 RUN set -x \
-    && addgroup -g 1000 tm \
-    && adduser -D -H -u 1000 -s /sbin/nologin -G tm -g tm yuki \ 
-    && echo "yuki:P@ssw0rd" | chpasswd \
     && tempDir="$(mktemp -d)" \
     && netatalkPackages=" \
         db \
@@ -18,7 +15,7 @@ RUN set -x \
         libgcrypt \
     " \
     && cd ${tempDir} \
-    && wget https://nchc.dl.sourceforge.net/project/netatalk/netatalk/3.1.12/netatalk-${NETATALK_VERSION}.tar.gz \
+    && wget https://nchc.dl.sourceforge.net/project/netatalk/netatalk/${NETATALK_VERSION}/netatalk-${NETATALK_VERSION}.tar.gz \
     && tar xf netatalk-${NETATALK_VERSION}.tar.gz \
     && cd netatalk-${NETATALK_VERSION} \
     && apk add --no-cache --virtual .build-deps \
@@ -67,9 +64,7 @@ RUN set -x \
         /data/share-folder \
         /data/time-machine \
     && chmod 770 $(find /data/ -type d) \
-    && chgrp -R tm /data
-
-VOLUME ["/data/share-folder", "/data/time-machine"]
+    && chgrp -R 1000 /data
 
 COPY ["afp.conf", "/etc/afp.conf"] 
 COPY ["entrypoint.sh", "/etc/entrypoint.sh"]
