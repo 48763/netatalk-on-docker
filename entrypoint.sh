@@ -9,7 +9,8 @@ if [ -n "${GROUP}" -o -n "${GID}" ]; then
     addgroup -g ${GID} ${GROUP}
   else
     addgroup -g 1000 ${GROUP}
-
+  fi
+  
 else 
   addgroup -g 1000 tm
 fi
