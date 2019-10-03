@@ -10,7 +10,7 @@ if [ -n "${GROUP}" -o -n "${GID}" ]; then
   else
     addgroup -g 1000 ${GROUP}
   fi
-  
+
 else 
   addgroup -g 1000 tm
 fi
@@ -31,30 +31,51 @@ if [ -n "${USER}" -o -n "${UID}" ]; then
     fi
 
   else 
+
+    if [ -n "${GROUP}" ]; then 
+      adduser -D -u 1000 -s /sbin/nologin -G ${GROUP} -g ${GROUP} ${USER}
+    else
       adduser -D -u 1000 -s /sbin/nologin -G tm -g tm ${USER}
+    fi
+
   fi
 
 else 
-  adduser -D -u 1000 -s /sbin/nologin -G tm -g tm yuki
+
+  if [ -n "${GROUP}" ]; then 
+    adduser -D -u 1000 -s /sbin/nologin -G ${GROUP} -g ${GROUP} yuki
+  else
+    adduser -D -u 1000 -s /sbin/nologin -G tm -g tm yuki
+  fi
+
 fi
 
 if [ -n "${PASSWORD}" ]; then
-  if [ -n "{USER}" ]; then 
+
+  if [ -n "${USER}" ]; then 
     echo "${USER}:${PASSWORD}" | chpasswd
   else
     echo "yuki:${PASSWORD}" | chpasswd
+  fi
+
 else
-  echo "yuki:P@ssw0rd" | chpasswd
+
+  if [ -n "${USER}" ]; then 
+    echo "${USER}:P@ssw0rd" | chpasswd
+  else 
+    echo "yuki:P@ssw0rd" | chpasswd
+  fi
+
 fi
 
-if [ -z DISABLED]; then 
+if [ -z "${DISABLED}" ]; then 
 
   if [ ! -e /data/share-folder ]; then
     mkdir /data/share-folder
   fi
 
   if [ ! -e /data/time-machine ]; then
-    mkdir /data/share-folder
+    mkdir /data/time-machine
   fi
 
   FIND="find /data/ -type d -group 1000 -name"
@@ -64,18 +85,19 @@ if [ -z DISABLED]; then
 
   if [ -z $(${FIND} share-folder) ]; then 
     if [ -n "${GID}" ]; then
-      chgrp -R ${GID} /data/share-folder
+      chgrp ${GID} /data/share-folder
     else
-      chgrp -R 1000 /data/share-folder
+      chgrp 1000 /data/share-folder
     fi
   fi
-  chmod -R g+rwx /data/share-folder
+  chmod g+rwx /data/share-folder
 
   if [ -z $(${FIND} time-machine) ]; then 
     if [ -n "${GID}" ]; then
-      chgrp -R ${GID} /data/time-machine
+      chgrp ${GID} /data/time-machine
+      ls
     else
-      chgrp -R 1000 /data/time-machine
+      chgrp 1000 /data/time-machine
     fi
   fi
   chmod g+rwx /data/time-machine
