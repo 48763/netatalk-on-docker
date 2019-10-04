@@ -1,5 +1,5 @@
 # netatalk-on-docker
-*Netatalk* 是一款實作 AFP 的免費開源軟體，它允許 *類unix（Unix-like）* 操作系統作為蘋果（Macintosh）電腦的文件服務器。
+*Netatalk* 是一款實作 [AFP（Apple Filing Protocol）](https://en.wikipedia.org/wiki/Apple_Filing_Protocol)的免費開源軟體，它允許 *類unix（Unix-like）* 操作系統當作蘋果（Macintosh）電腦的文件服務器。
 
 ## 簡介
 > 簡介尚未完成
