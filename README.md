@@ -29,11 +29,11 @@ $ sudo docker build -t netatalk .
 $ sudo docker run --name netatalk -p 548:548 -v data:/data -d netatalk
 ```
 
-預設的儲存目錄在 `/data`，為了確保數據不會跟著容器被刪除，所以在運行容器時，務必使用 `--mount` 或 `--volume`，將目錄掛載至本地端*目錄*或*匿名卷*。
+預設儲存目錄在 `/data`，為了確保數據不隨著容器被刪除，當運行容器時，請使用 `--mount` 或 `--volume`，掛載本地端*目錄*或*匿名卷*以保存數據。
 
 ### 連接使用
 
-因為 bonjour 無法探索到容器中所運行的應用，所以需要手動設定連接伺服器。
+bonjour 是應用廣播探索服務，所以需要手動設定連接伺服器。
 點擊  <img src="img/netatalk-img01.png" width="25px" height="25px">（Finder），使用快捷鍵 `cmd` + `k`，將會跳出連接伺服器的視窗。輸入伺服器位置後連接，再輸入預設的用戶 - `yuki` 和密碼 - `P@ssw0rd` ，就能夠順利登入。
 
 ```
@@ -58,7 +58,7 @@ afp://192.168.51.59:48763
 
 ### USER & GROUP
 
-在一般使用時，只需要設置 `USER` 和 `PASSWORD`，就可以創建自己的帳戶進行操作。
+一般使用時，只需要設置 `USER` 和 `PASSWORD`，就可以創建自己的帳戶進行操作。
 
 ```bash
 $ sudo docker run \
@@ -70,7 +70,7 @@ $ sudo docker run \
     lab.yukifans.com/librery/netatalk:3.1.1
 ```
 
-在使用 `--mount` 或 `--volume` 掛載目錄時，如果想讓用戶可以輕鬆在本地存取目錄及檔案，可以針對用戶設定 `UID` 和 `GID`。
+當使用 `--mount` 或 `--volume` 掛載目錄時，如果想使用戶輕鬆在本地存取目錄及檔案，可設定用戶的 `UID` 和 `GID`。
 
 ```bash
 $ sudo docker run \
