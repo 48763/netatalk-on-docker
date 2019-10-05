@@ -18,7 +18,7 @@ netatalk 3.1.12
 可以使用下面指令，讓 docker 直接從鏡像庫下載 *netatalk:3.1.1* 運行：
 
 ```bash
-$ sudo docker run --name netatalk -p 548:548 -v data:/data -d lab.yukifans.com/librery/netatalk:3.1.1
+$ sudo docker run --name netatalk -p 548:548 -v data:/data -d 48763/netatalk:3.1.1
 ```
 
 或是使用 git clone 複製專案，並在本機端建立鏡像檔運行：
@@ -67,7 +67,7 @@ $ sudo docker run \
     -e USER=new_user_name \
     -e PASSWORD=new_password \
     -d \
-    lab.yukifans.com/librery/netatalk:3.1.1
+    48763/netatalk:3.1.1
 ```
 
 當使用 `--mount` 或 `--volume` 掛載目錄時，如果想使用戶輕鬆在本地存取目錄及檔案，可設定用戶的 `UID` 和 `GID`。
@@ -82,7 +82,7 @@ $ sudo docker run \
     -e GROUP=devops \
     -e GID=$(id -g) \
     -d \
-    lab.yukifans.com/librery/netatalk:3.1.1
+    48763/netatalk:3.1.1
 ```
 
 ### DISABLED
@@ -93,7 +93,7 @@ $ sudo docker run \
     --name netatalk \
     -e DISABLED=any_string \
     -d \
-    lab.yukifans.com/librery/netatalk:3.1.1
+    48763/netatalk:3.1.1
 ```
 
 ## 添加帳戶
