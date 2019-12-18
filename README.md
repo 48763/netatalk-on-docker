@@ -53,7 +53,7 @@ afp://192.168.51.59:48763
 | UID | 設定用戶識別碼 | 1000 | USER |
 | GROUP | 自定義用戶群組名稱 | tm | - |
 | GID | 設定用戶群組識別碼 | 1000 | GROUP |
-| PASSWORD | 變更用戶登入預設密碼 | P@ss2w0rd | - |
+| PASSWORD | 變更用戶登入預設密碼 | P@ssw0rd | - |
 | DISABLED | 關閉目錄生成及其權限變更 | - | - |
 
 ### USER & GROUP
