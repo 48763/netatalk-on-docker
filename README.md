@@ -76,7 +76,6 @@ $ sudo docker run \
 $ sudo docker run \
     --name netatalk \
     -p 548:548 \
-    -e USER=new_user_name \
     -e USER=yayuyo \
     -e UID=$(id -u)\
     -e GROUP=devops \
